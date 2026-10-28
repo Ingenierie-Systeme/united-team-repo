@@ -12,6 +12,9 @@ namespace IngeSys.Environment
         [SerializeField]
         Vector2 surfaceSize = new Vector2(20f, 12f);
 
+        [Tooltip("Galeries inondées : niveau moyen hors de la surface visible, sans courant ni vague supplémentaire.")]
+        public bool floodedBeyondSurface;
+
         public float WaterLevel
         {
             get {
@@ -30,8 +33,9 @@ namespace IngeSys.Environment
         public float GetHeightAtWorldXZ(float x, float z)
         {
             var waves = cachedWaves ? cachedWaves : (cachedWaves = GetComponent<GerstnerSurface>());
-            return waves && waves.enabled && waves.coupleBuoyancy ? waves.GetHeightAtWorldXZ(x, z)
-                                                                  : waterLevel;
+            float height = waves && waves.enabled && waves.coupleBuoyancy
+                ? waves.GetHeightAtWorldXZ(x, z) : waterLevel;
+            return floodedBeyondSurface && float.IsNegativeInfinity(height) ? waterLevel : height;
         }
 
         void Awake()
