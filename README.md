@@ -21,6 +21,12 @@
 Liens Canva (pour l'équipe):
 https://canva.link/1owfrv3v93n80cp
 
+Lien drive : 
+https://drive.google.com/drive/folders/1FjV8GK_41jrpMsA0FTS6ITrTZtgfy01Q?usp=sharing
+
+
+
+
 ---
 
 
