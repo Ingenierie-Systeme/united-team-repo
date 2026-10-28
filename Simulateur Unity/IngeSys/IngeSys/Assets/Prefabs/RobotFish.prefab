@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 9078237371483033890}
   - component: {fileID: 8521786058686120722}
   - component: {fileID: 6294914036796405684}
+  - component: {fileID: 1721722289417629829}
   m_Layer: 0
   m_Name: RobotFish
   m_TagString: Untagged
@@ -486,6 +487,24 @@ MonoBehaviour:
   topicName: /imu/data
   frameId: imu_link
   frequency: 20
+--- !u!114 &1721722289417629829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434304210850465660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a1fab38a8638593281a8405cfb9de08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IngeSys.Robot.RobotDepthPublisher
+  pressureTopic: /barometer/pressure
+  depthTopic: /depth
+  frameId: barometer_link
+  frequency: 20
+  atmosphericPressurePa: 101325
+  sensorLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1510521982180004868
 GameObject:
   m_ObjectHideFlags: 0
