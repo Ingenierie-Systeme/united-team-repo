@@ -18,6 +18,11 @@
   <a href="#simulation">Simulation</a>
 </p>
 
+Liens Canva (pour l'équipe):
+https://canva.link/1owfrv3v93n80cp
+
+---
+
 ---
 
 ## Mécanique
