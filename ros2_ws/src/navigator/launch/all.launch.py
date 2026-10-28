@@ -1,0 +1,36 @@
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+
+def generate_launch_description():
+
+    return LaunchDescription([
+        Node(package="navigator", output="screen",
+            executable="navigator",
+            name="navigator",
+        ),
+        Node(package="navigator", output="screen",
+            executable="rc",
+            name="rc",
+        ),
+        Node(package="navigator", output="screen",
+            executable="baro",
+            name="baro",
+        ),
+        Node(package="navigator", output="screen",
+            executable="fusion",
+            name="fusion",
+        ),
+        Node(package="navigator", output="screen",
+            executable="navigation",
+            name="navigation",
+        ),
+        Node(package="navigator", output="screen",
+            executable="control",
+            name="control",
+        ),
+        Node(package="navigator", output="screen",
+            executable="cam",
+            name="cam",
+                ),
+    ])
