@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 1686511160087781734}
   - component: {fileID: 9078237371483033890}
   - component: {fileID: 8521786058686120722}
+  - component: {fileID: 6294914036796405684}
   m_Layer: 0
   m_Name: RobotFish
   m_TagString: Untagged
@@ -470,6 +471,21 @@ MonoBehaviour:
   thrustN: 0
   lateralN: 0
   applicationPointWorld: {x: 0, y: 0, z: 0}
+--- !u!114 &6294914036796405684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434304210850465660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666cd30779f04faaa89ee6a8d6bad395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IngeSys.Robot.RobotImuPublisher
+  topicName: /imu/data
+  frameId: imu_link
+  frequency: 20
 --- !u!1 &1510521982180004868
 GameObject:
   m_ObjectHideFlags: 0
