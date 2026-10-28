@@ -1,0 +1,44 @@
+IngeSys/IngeSys/Backups
+IngeSys/IngeSys/Captures
+IngeSys/IngeSys/Contexte
+IngeSys/IngeSys/Logs
+IngeSys/IngeSys/Temps
+IngeSys/IngeSys/PROMPTS_CODEX.md
+IngeSys/IngeSys/AGENTS.md
+
+# Caches et fichiers locaux regeneres par Unity
+IngeSys/IngeSys/[Ll]ibrary/
+IngeSys/IngeSys/[Tt]emp/
+IngeSys/IngeSys/[Oo]bj/
+IngeSys/IngeSys/[Ll]ogs/
+IngeSys/IngeSys/[Uu]ser[Ss]ettings/
+IngeSys/IngeSys/[Mm]emoryCaptures/
+IngeSys/IngeSys/[Rr]ecordings/
+
+# Executables et builds generes (conserver Assets, Packages et ProjectSettings)
+IngeSys/IngeSys/[Bb]uild/
+IngeSys/IngeSys/[Bb]uilds/
+
+# Configuration locale des IDE et projets C# generes par Unity
+IngeSys/IngeSys/.vs/
+IngeSys/IngeSys/.vscode/
+IngeSys/IngeSys/.idea/
+IngeSys/IngeSys/*.csproj
+IngeSys/IngeSys/*.sln
+IngeSys/IngeSys/*.slnx
+IngeSys/IngeSys/*.suo
+IngeSys/IngeSys/*.user
+IngeSys/IngeSys/*.userprefs
+IngeSys/IngeSys/*.pidb
+IngeSys/IngeSys/*.booproj
+IngeSys/IngeSys/*.opendb
+IngeSys/IngeSys/*.VC.db
+
+# Rapports de crash Unity et fichiers temporaires du systeme
+IngeSys/IngeSys/sysinfo.txt
+IngeSys/IngeSys/mono_crash.*
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+

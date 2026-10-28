@@ -1,0 +1,18 @@
+Unity 6000.6.5f1, unityMCP, Play Mode, fixedDeltaTime ≈0.02 s.
+Commands injected via RobotKeyboardInput.CaptureCommands; native physical key presses NON VÉRIFIÉ.
+case,pass,measurements
+mass_forward,True,s=0.1199998 forwardY=-0.8739256
+both_mass_keys_hold,True,target=0.12
+R_no_teleport,True,s=0.119 elapsed=0.0199999929138324
+R_center_constant_mass,True,s=5.616429E-08 mass=3.891593
+mass_aft,True,forwardY=0.8775548
+Z_on_straight,True,speed=0.2328017 T=0.4873878
+Z_off_decay,True,speed=0.1169761
+left,True,yawRate=-0.5847576 offset=0.3490658
+both_direction_keys,True,mode=TURN_LEFT
+right_reversal,True,yawRate=0.6229298
+right_toggle_straight,True,offset=0
+combined_preserved,True,s=0.02999124 forwardY=-0.5493083
+floor_collision,True,hullBottom=1.000007
+wall_collision,True,hullMaxX=9.999898 vx=-0.0007087854
+Gerstner_partial,True,minV=0.001955979 maxV=0.003891563
