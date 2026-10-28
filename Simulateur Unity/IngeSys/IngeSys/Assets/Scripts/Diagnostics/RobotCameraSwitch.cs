@@ -2,19 +2,19 @@ using UnityEngine;
 
 namespace IngeSys.Diagnostics
 {
-    /// <summary>V alterne la caméra de suivi et la caméra embarquée, sans changer le pilotage.</summary>
+    /// <summary>V cycles through the base, first-person and rear chase views.</summary>
     [DisallowMultipleComponent]
     public sealed class RobotCameraSwitch : MonoBehaviour
     {
         public Camera baseCamera;
         public Camera fpsCamera;
+        public Camera rearCamera;
         public KeyCode toggleKey = KeyCode.V;
-        public bool IsFirstPerson { get; private set; }
+        public int ViewIndex { get; private set; }
+        public bool IsFirstPerson => ActiveCamera && ActiveCamera == fpsCamera;
+        public Camera ActiveCamera => CameraAt(ViewIndex);
 
-        void Awake()
-        {
-            SetFirstPerson(false);
-        }
+        void Awake() { Select(0); }
 
         void Update()
         {
@@ -23,28 +23,34 @@ namespace IngeSys.Diagnostics
 
         public void Toggle()
         {
-            SetFirstPerson(!IsFirstPerson);
+            for (int step = 1; step <= 3; step++)
+            {
+                int next = (ViewIndex + step) % 3;
+                var camera = CameraAt(next);
+                if (camera && camera.gameObject.activeInHierarchy) { Select(next); return; }
+            }
         }
 
-        void SetFirstPerson(bool enabled)
+        Camera CameraAt(int index) => index == 1 ? fpsCamera : index == 2 ? rearCamera : baseCamera;
+
+        void Select(int index)
         {
-            if (!baseCamera || !fpsCamera || baseCamera == fpsCamera) return;
-            IsFirstPerson = enabled;
-            baseCamera.enabled = !enabled;
-            fpsCamera.enabled = enabled;
-            SetListener(baseCamera, !enabled);
-            SetListener(fpsCamera, enabled);
+            if (!CameraAt(index)) return;
+            ViewIndex = index;
+            var active = ActiveCamera;
+            SetEnabled(baseCamera, active);
+            SetEnabled(fpsCamera, active);
+            SetEnabled(rearCamera, active);
         }
 
-        static void SetListener(Camera camera, bool enabled)
+        static void SetEnabled(Camera camera, Camera active)
         {
+            if (!camera) return;
+            camera.enabled = camera == active;
             var listener = camera.GetComponent<AudioListener>();
-            if (listener) listener.enabled = enabled;
+            if (listener) listener.enabled = camera.enabled;
         }
 
-        void OnDisable()
-        {
-            SetFirstPerson(false);
-        }
+        void OnDisable() { Select(0); }
     }
 }
