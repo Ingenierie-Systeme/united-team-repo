@@ -70,9 +70,8 @@ Le modèle comprend :
 - Une surface de Gerstner commune au rendu de l'eau et au calcul d'immersion.
 - Des capteurs idéaux d'IMU, de pression et de profondeur publiés vers ROS 2.
 
-Les masses, inerties et coefficients hydrodynamiques non mesurés restent provisoires. Les vagues agissent sur l'immersion et la flottabilité près de la surface ; aucun courant sous-marin, calcul CFD ou asservissement automatique de cap/profondeur n'est modélisé.
+Les masses, inerties et coefficients hydrodynamiques non mesurés restent provisoires. Les vagues agissent sur l'immersion et la flottabilité près de la surface.
 
-Les [documents des phases de développement et résultats historiques](<Simulateur Unity/IngeSys/IngeSys/Assets/Documentation>) accompagnent les [scènes](<Simulateur Unity/IngeSys/IngeSys/Assets/Scenes>) et les [scripts de validation](<Simulateur Unity/IngeSys/IngeSys/Assets/Tests/Simulation>). Certaines descriptions de phases précèdent l'ajout de la grotte et de ROS 2.
 
 ## ROS 2 et logiciel embarqué
 
