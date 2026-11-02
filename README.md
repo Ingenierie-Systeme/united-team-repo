@@ -164,6 +164,8 @@ Tous les équipements partagent une masse commune (GND). Pour PWM1 et PWM3, seul
 
 ## Budget
 
+- [Bill of Materials & Budget](https://docs.google.com/spreadsheets/d/1Qr9bEgOpJ-lRK8r1bVk7Ykp1GppL0cOrZnI6PdFquQw/edit?gid=0#gid=0)
+
 Prix lampe : **156 €**
 
 |  | Coût |
