@@ -1,3 +1,7 @@
 .vscode
 
 Simulateur Unity/IngeSys/IngeSys/Assets/Documentation
+# Fichiers générés ROS 2
+/ros2_ws/build/
+/ros2_ws/install/
+/ros2_ws/log/
