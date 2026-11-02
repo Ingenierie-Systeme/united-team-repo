@@ -164,12 +164,15 @@ Tous les équipements partagent une masse commune (GND). Pour PWM1 et PWM3, seul
 
 ## Budget
 
-Prix lampe : **156 €**
+[Bill of Materials & Budget](https://docs.google.com/spreadsheets/d/1Qr9bEgOpJ-lRK8r1bVk7Ykp1GppL0cOrZnI6PdFquQw/edit?gid=0#gid=0)
 
-|  | Coût |
-| --- | --- |
-| **Prototype** | 10 135 € |
-| **Robot fini** | 2 575 € |
+- Prix des matériaux et composants: **1 735 €**
+- Total RH: **9 240 €**
+
+|  | Total | Composition du coût |
+| --- | --- |---|
+| **Prototype** | 10 135 € |Prix matériaux + Total RH|
+| **Robot fini** | 2 575 € |Prix matériaux + RH tech|
 
 ## Ressources de l'équipe
 
