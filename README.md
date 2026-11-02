@@ -164,6 +164,13 @@ Tous les équipements partagent une masse commune (GND). Pour PWM1 et PWM3, seul
 
 ## Budget
 
+Prix lampe : 156 €
+
+|  | Coût |
+| --- | --- |
+| Prototype | 10 135 € |
+| Robot fini | 2 575 € |
+
 ## Ressources de l'équipe
 
 - [Espace Canva](https://canva.link/1owfrv3v93n80cp)
