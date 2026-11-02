@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+"Propulse simplement le robot en ligne droite"
+
+
 import rclpy
 from rclpy.node import Node
 
