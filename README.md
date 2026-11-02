@@ -14,7 +14,7 @@
   <a href="#ros-2-et-logiciel-embarqué">ROS 2</a> ·
   <a href="#organisation-du-dépôt">Organisation</a> ·
   <a href="#mécanique">Mécanique</a> ·
-  <a href="#électronique">Électronique</a>
+  <a href="#électronique">Électronique</a> ·
   <a href="#budget">Budget</a>
 </p>
 
