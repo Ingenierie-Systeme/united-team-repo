@@ -15,6 +15,7 @@
   <a href="#organisation-du-dépôt">Organisation</a> ·
   <a href="#mécanique">Mécanique</a> ·
   <a href="#électronique">Électronique</a>
+  <a href="#budget">Budget</a>
 </p>
 
 Le projet développe un robot aquatique propulsé par une palme, dont l'assiette est modifiée par une masse mobile interne. Le dépôt rassemble la conception du robot, le logiciel destiné au Raspberry Pi et à la carte Navigator, ainsi qu'un simulateur permettant d'explorer son comportement dans une piscine et des galeries karstiques inondées.
@@ -160,6 +161,8 @@ La carte Navigator assure la commande des actionneurs et l’acquisition capteur
 - La caméra USB ELP est reliée au Raspberry Pi, qui fournit son alimentation à 5 V et reçoit les données vidéo par USB.
 
 Tous les équipements partagent une masse commune (GND). Pour PWM1 et PWM3, seuls le signal et la masse sont raccordés à la Navigator, puisque le servomoteur de masse mobile et la lampe disposent de leur propre alimentation depuis le PM06.
+
+## Budget
 
 ## Ressources de l'équipe
 
