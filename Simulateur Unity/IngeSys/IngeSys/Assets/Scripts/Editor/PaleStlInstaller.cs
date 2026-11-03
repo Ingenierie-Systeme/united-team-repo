@@ -38,7 +38,7 @@ namespace IngeSys.EditorTools
             blade.transform.SetParent(pivot, false);
             blade.transform.localPosition = new Vector3(0, 0, -.34f);
             blade.transform.localRotation = Quaternion.Euler(0, 180, 0);
-            blade.transform.localScale = Vector3.one;
+            blade.transform.localScale = new Vector3(1.5f, 1, 1);
             var parameters = robot.GetComponent<IngeSys.Robot.RobotFishParameters>();
             var material = parameters.fin.GetComponent<Renderer>().sharedMaterial;
             foreach (var renderer in blade.GetComponentsInChildren<Renderer>())
@@ -55,7 +55,7 @@ namespace IngeSys.EditorTools
             EditorSceneManager.MarkSceneDirty(scene);
             // Save only when there were no outstanding user edits before installation.
             if (!previouslyDirty) EditorSceneManager.SaveScene(scene);
-            Debug.Log("pale.stl installed at CAD servo pivot: 300 x 150 x 1 mm. Check rear view and save scene if dirty.");
+            Debug.Log("pale.stl installed at CAD servo pivot: 300 x 150 x 1.5 mm. Check rear view and save scene if dirty.");
         }
     }
 }

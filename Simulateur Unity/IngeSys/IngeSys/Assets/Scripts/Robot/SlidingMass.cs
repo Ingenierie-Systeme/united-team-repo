@@ -47,6 +47,13 @@ namespace IngeSys.Robot
             float total = Mathf.Max(0.001f, p.totalMassKg);
             float moving = Mathf.Clamp(p.slidingMassKg, 0f, total);
 
+            var distribution = GetComponent<RobotMassDistribution>();
+            if (distribution && distribution.Apply(positionM))
+            {
+                if (p.slidingMassVisual) p.slidingMassVisual.localPosition = new Vector3(0, 0, positionM);
+                return;
+            }
+
             body.mass = total;
             body.centerOfMass =
                 ((total - moving) * fixedMassCenter + moving * new Vector3(0f, 0f, positionM)) /

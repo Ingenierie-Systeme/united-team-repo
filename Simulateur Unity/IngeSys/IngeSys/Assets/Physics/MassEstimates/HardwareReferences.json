@@ -1,0 +1,39 @@
+{
+  "supplyVoltageV": 7.4,
+  "finServo": {
+    "model": "Hitec D955TW inside SER-200X kit",
+    "servoAloneMassKg": 0.066,
+    "factoryTravelEachSideDeg": 60,
+    "noLoadSecondsPer60Deg": 0.12,
+    "stallTorqueNm": 2.844,
+    "pwmMinUs": 900,
+    "pwmCenterUs": 1500,
+    "pwmMaxUs": 2100,
+    "accelerationRadS2": 40,
+    "accelerationIsProvisional": true,
+    "source": "https://irp.cdn-website.com/7dee8fe7/files/uploaded/HCS_D955TW_Specsheetv2.2_102-1729878002.pdf"
+  },
+  "massServo": {
+    "model": "Hitec HS-5496MH",
+    "massKg": 0.052,
+    "factoryTravelEachSideDeg": 60,
+    "noLoadSecondsPer60Deg": 0.15,
+    "stallTorqueNm": 0.735,
+    "pwmMinUs": 900,
+    "pwmCenterUs": 1500,
+    "pwmMaxUs": 2100,
+    "linkageKnown": false,
+    "source": "https://shop.multiplex-rc.de/en/servo-hs-5496mh-p6743/"
+  },
+  "electronics": {
+    "raspberryPi": "Raspberry Pi4 ModelB 4GB",
+    "raspberryPiMassKg": 0.046,
+    "navigatorMassKg": 0.026,
+    "camera": "ELP-USBFHD06H-L21 Sony IMX322; mass not provided in supplied sheet",
+    "battery": "LRP Competition Car Line5700mAh7.4V2S80C/40C; matched reference430206",
+    "batteryMassKg": 0.2963,
+    "smallModulesAndWiringAllowanceKg": 0.05,
+    "smallModules": ["Bar30", "Holybro micro PM06 V2 14S", "Turnigy5A SBEC", "adapter cable"]
+  },
+  "notes": "Reference inventory, not a runtime configuration asset. Runtime servo values are on FinServo; masses are in RobotMassAudit and RobotMassDistribution. SBEC is a regulator, not a propulsion ESC. No electrical battery-discharge or sensor model added. SER-200X complete assembly estimated240g including the66g D955TW. HS-5496 linkage, mounting and movable payload unmeasured."
+}

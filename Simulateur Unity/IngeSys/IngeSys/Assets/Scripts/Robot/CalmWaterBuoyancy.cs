@@ -10,6 +10,9 @@ namespace IngeSys.Robot
         [Min(1f)]
         public float density = 1000f;
         public bool includeFinVolume = true;
+        public bool useCadFinCenter;
+        public Vector3 cadFinCenterLocal;
+
         [Range(4, 32)]
         public int axialSamples = 12;
         [Range(2, 16)]
@@ -71,11 +74,15 @@ namespace IngeSys.Robot
                         {
                             // Mean fin volume stays in its neutral pose: visual beating adds no
                             // alternating buoyancy torque.
-                            Sample(transform.TransformPoint(new Vector3(
-                                       p.finThickness * ((x + 0.5f) / 4f - 0.5f),
-                                       p.finHeight * ((y + 0.5f) / 8f - 0.5f),
-                                       -p.hullLength / 2f - p.finLength * (z + 0.5f) / 12f)),
-                                   finVolume / (4 * 8 * 12));
+                            Vector3 finPoint = useCadFinCenter
+                                ? cadFinCenterLocal + new Vector3(
+                                    p.finThickness * ((x + .5f) / 4 - .5f),
+                                    p.finHeight * ((y + .5f) / 8 - .5f),
+                                    p.finLength * ((z + .5f) / 12 - .5f))
+                                : new Vector3(p.finThickness*((x+.5f)/4-.5f),
+                                    p.finHeight*((y+.5f)/8-.5f),
+                                    -p.hullLength/2-p.finLength*(z+.5f)/12);
+                            Sample(transform.TransformPoint(finPoint), finVolume/(4*8*12));
                         }
                     }
                 }
