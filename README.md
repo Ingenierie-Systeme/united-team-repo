@@ -47,7 +47,7 @@ Cliquer dans la fenêtre de jeu pour donner le focus au clavier.
 
 | Touche | Action |
 | --- | --- |
-| `Z` | Activer / désactiver la propulsion |
+| `W` | Activer / désactiver la propulsion |
 | `↑` / `↓` maintenues | Déplacer la consigne de masse vers l'avant / l'arrière |
 | `R` | Recentrer progressivement la masse mobile |
 | `←` / `→` | Sélectionner le virage gauche / droite ; un second appui identique revient en ligne droite |
