@@ -26,10 +26,12 @@ Le projet développe un robot aquatique propulsé par une palme, dont l'assiette
 
 | Plateforme | Téléchargement du build complet | Exécutable après extraction |
 | --- | --- | --- |
-| Linux x86_64 | [**Télécharger pour Linux (.zip)**](https://github.com/Ingenierie-Systeme/united-team-repo/raw/refs/heads/main/downloads/United-Team-Linux-x86_64.zip) | `United-Team-Linux/Simulator_Linux.x86_64` |
-| Windows x86_64 | [**Télécharger pour Windows (.zip)**](https://github.com/Ingenierie-Systeme/united-team-repo/raw/refs/heads/main/downloads/United-Team-Windows-x86_64.zip) | `United-Team-Windows/IngeSys.exe` |
+| Linux x86_64 | [**Télécharger pour Linux (.zip)**](https://media.githubusercontent.com/media/Ingenierie-Systeme/united-team-repo/main/downloads/United-Team-Linux-x86_64.zip) | `United-Team-Linux/Simulator_Linux.x86_64` |
+| Windows x86_64 | [**Télécharger pour Windows (.zip)**](https://media.githubusercontent.com/media/Ingenierie-Systeme/united-team-repo/main/downloads/United-Team-Windows-x86_64.zip) | `United-Team-Windows/IngeSys.exe` |
 
 Conserver l'exécutable avec son dossier de données et toutes les bibliothèques fournies : déplacer uniquement le fichier `.exe` ou `.x86_64` empêche le lancement. Ces archives contiennent les builds fournis dans le dépôt ; elles ne sont pas régénérées automatiquement lorsque les sources Unity changent.
+
+Archives mises à jour le **3 novembre 2026** à partir des builds Linux et Windows présents dans le dépôt : **117,1 Mio pour Linux**, **120,2 Mio pour Windows**. Les ZIP sont suivis avec Git LFS ; les liens ci-dessus téléchargent leur contenu complet. Leur mise à jour sur GitHub nécessite la publication des fichiers LFS avec le commit correspondant.
 
 **Windows :** extraire le ZIP, ouvrir `United-Team-Windows`, puis lancer `IngeSys.exe`.
 
