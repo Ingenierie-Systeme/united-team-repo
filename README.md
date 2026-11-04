@@ -60,7 +60,9 @@ Cliquer dans la fenêtre de jeu pour donner le focus au clavier.
 
 ## Simulation Unity
 
-**[Ouvrir le dossier du projet Unity](<Simulateur Unity/IngeSys/IngeSys>)** · Version de l'éditeur : **6000.6.5f1**, pipeline de rendu Built-in.
+[![Schéma électronique du robot](Image/Simu.gif)](Image/Simu.gif)
+
+**[Ouvrir le dossier du projet Unity](<Simulateur Unity/IngeSys/IngeSys>)** · Version de l'éditeur : **6000.6.5f1**.
 
 La scène principale est [`RobotFishKatarstique.unity`](<Simulateur Unity/IngeSys/IngeSys/Assets/Scenes/RobotFishKatarstique.unity>) : une piscine donne accès à un puits et à un réseau de galeries inondées. Elle comporte le robot pilotable, plusieurs caméras, une lampe et une ambiance sous-marine. C'est la scène activée dans les Build Settings actuels.
 
@@ -75,7 +77,7 @@ Le modèle comprend :
 - Une surface de Gerstner commune au rendu de l'eau et au calcul d'immersion.
 - Des capteurs idéaux d'IMU, de pression et de profondeur publiés vers ROS 2.
 
-Les masses, inerties et coefficients hydrodynamiques non mesurés restent provisoires. Les vagues agissent sur l'immersion et la flottabilité près de la surface.
+Les vagues agissent sur l'immersion et la flottabilité près de la surface.
 
 
 ## ROS 2 et logiciel embarqué
