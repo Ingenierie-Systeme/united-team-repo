@@ -23,7 +23,7 @@ class ManualControlNode(Node):
         # ----------------------------------
         # Parameters
 
-        self.frequency = 0.5
+        self.frequency = 1.0
 
         # ----------------------------------
         # Propulsion state
