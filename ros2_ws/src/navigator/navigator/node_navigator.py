@@ -4,7 +4,7 @@ import rclpy
 from rclpy.node import Node
 
 from sensor_msgs.msg import Imu, MagneticField
-from std_msgs.msg import Float32MultiArray
+from std_msgs.msg import Float32MultiArray, Float32
 
 import bluerobotics_navigator as navigator
 import numpy as np
@@ -46,6 +46,13 @@ class NavigatorNode(Node):
             Float32MultiArray,
             "/output/servos",
             self.pwm_callback,
+            10,)
+
+        ### Subscriber PWM light
+        self.create_subscription(
+            Float32,
+            "/output/light_pwm",
+            self.light_callback,
             10,)
 
         ### Timer IMU
@@ -90,6 +97,12 @@ class NavigatorNode(Node):
         self.get_logger().info("coucou")
         navigator.set_pwm_channel_duty_cycle(1, duty_servo1)
         navigator.set_pwm_channel_duty_cycle(0, duty_servo2)
+
+    def light_callback(self, msg):
+
+        duty_light = msg.data
+
+        navigator.set_pwm_channel_duty_cycle(2, duty_light)
 
 
 def main():

@@ -47,7 +47,8 @@ setup(
                 'rc = navigator.node_rc:main',
                 'cam = navigator.node_cam:main',
                 'propulsion = navigator.propulsion_node:main',
-                'manual_control = navigator.manual_control_node:main'
+                'manual_control = navigator.manual_control_node:main',
+                'light = navigator.light_node:main',
         ],
     },
 )
