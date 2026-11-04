@@ -31,6 +31,8 @@ Le projet développe un robot aquatique propulsé par une palme, dont l'assiette
 
 Conserver l'exécutable avec son dossier de données et toutes les bibliothèques fournies : déplacer uniquement le fichier `.exe` ou `.x86_64` empêche le lancement. Ces archives contiennent les builds fournis dans le dépôt ; elles ne sont pas régénérées automatiquement lorsque les sources Unity changent.
 
+Archives mises à jour le **4 novembre 2026** : **117,2 Mio pour Linux**, **120,2 Mio pour Windows**. Les liens de téléchargement seront actualisés après publication de ces ZIP via Git LFS sur `main`.
+
 **Windows :** extraire le ZIP, ouvrir `United-Team-Windows`, puis lancer `IngeSys.exe`.
 
 **Linux :** extraire le ZIP, ouvrir un terminal dans le dossier contenant `United-Team-Linux`, puis exécuter :
