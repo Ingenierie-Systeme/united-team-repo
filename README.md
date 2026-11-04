@@ -144,6 +144,10 @@ La [CAO](CAO) regroupe les pièces et assemblages du robot :
 - `Pale/` : assemblage de palme et pièces aux formats Inventor, STEP et STL.
 - À la racine : aileron et support du système de masse mobile.
 
+### Etanchéité
+
+L'étanchéité a été faite et validée à vide ainsi qu'à 3m de profondeurs.
+
 ## Électronique
 
 Conception des cartes, choix des composants et intégration électronique.
