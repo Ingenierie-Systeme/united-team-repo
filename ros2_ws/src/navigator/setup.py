@@ -42,9 +42,7 @@ setup(
     entry_points={
         'console_scripts': [
                 'baro = navigator.node_baro:main',
-                'control = navigator.node_control:main',
                 'fusion = navigator.node_fusion:main',
-                'navigation = navigator.node_navigation:main',
                 'navigator = navigator.node_navigator:main',
                 'rc = navigator.node_rc:main',
                 'cam = navigator.node_cam:main',

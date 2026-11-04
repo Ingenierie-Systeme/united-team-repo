@@ -28,8 +28,9 @@ namespace IngeSys.Robot
 
         void Update()
         {
-            if (!readKeyboard)
+            if (!readKeyboard || IngeSys.Diagnostics.RobotPilotHUD.IsEditingPalmageField)
             {
+                up = down = false;
                 return;
             }
 
@@ -69,6 +70,23 @@ namespace IngeSys.Robot
             }
         }
 
+        /// <summary>UI units: degrees / hertz. The mechanical bound is symmetric and authoritative.</summary>
+        public bool SetPalmageSettings(float amplitudeDegrees, float frequencyHz, float absoluteAngleDegrees)
+        {
+            if (!Finite(amplitudeDegrees) || !Finite(frequencyHz) || !Finite(absoluteAngleDegrees)) return false;
+            var servo = GetComponent<FinServo>();
+            float limit = Mathf.Clamp(Mathf.Abs(absoluteAngleDegrees), 0, servo.hardwareMaximumAngleRad * Mathf.Rad2Deg) * Mathf.Deg2Rad;
+            servo.SetMechanicalAngleLimit(limit);
+            // Older V1 amplitude/offset ceilings must not silently contradict the chosen mechanical bound.
+            servo.maximumAmplitudeRad = limit;
+            servo.maximumOffsetRad = limit;
+            nominalAmplitudeRad = Mathf.Clamp(amplitudeDegrees * Mathf.Deg2Rad, 0, limit);
+            nominalFrequencyHz = Mathf.Clamp(frequencyHz, 0, Mathf.Max(0, servo.maximumFrequencyHz));
+            return true;
+        }
+
+        static bool Finite(float value) => !float.IsNaN(value) && !float.IsInfinity(value);
+
         void FixedUpdate()
         {
             var mass = GetComponent<SlidingMass>();
@@ -91,10 +109,10 @@ namespace IngeSys.Robot
             var force = GetComponent<MeanFinPropulsion>();
             float sign = force.kY >= 0 ? 1f : -1f;
             float angle = Mathf.Max(0, servo.maximumAngleRad);
-            float amplitude =
-                Mathf.Clamp(nominalAmplitudeRad, 0,
-                            Mathf.Min(Mathf.Max(0, servo.maximumAmplitudeRad), angle / 2f,
-                                      Mathf.Max(0, servo.maximumOffsetRad)));
+            float ceiling = Mathf.Min(Mathf.Max(0, servo.maximumAmplitudeRad), angle);
+            if (mode != FinMode.STRAIGHT)
+                ceiling = Mathf.Min(ceiling, angle / 2f, Mathf.Max(0, servo.maximumOffsetRad));
+            float amplitude = Mathf.Clamp(nominalAmplitudeRad, 0, ceiling);
             float f = Mathf.Clamp(nominalFrequencyHz, 0, Mathf.Max(0, servo.maximumFrequencyHz));
             if (f > 0)
             {

@@ -18,6 +18,7 @@ namespace IngeSys.Diagnostics
 
         void Update()
         {
+            if (IngeSys.Diagnostics.RobotPilotHUD.IsEditingPalmageField) return;
             if (Input.GetKeyDown(toggleKey)) Toggle();
         }
 

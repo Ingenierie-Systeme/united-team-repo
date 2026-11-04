@@ -5,11 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/RobotFishManualDemo.unity
     guid: d43f1660e4deafacdb787d0c9b57a3b1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PoolSimulation.unity
     guid: 837a4bfee164590819f96fff4acb2050
+  - enabled: 1
+    path: Assets/Scenes/RobotFishKatarstique.unity
+    guid: 9d9e66d67d93dcdeab21f072aa99eeb3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}

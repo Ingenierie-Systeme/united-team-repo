@@ -1,0 +1,279 @@
+[
+  {
+    "name": "Material.001",
+    "textures": {},
+    "color": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "name": "metal",
+    "textures": {},
+    "color": [
+      0.5,
+      0.5,
+      0.5,
+      1.0
+    ]
+  },
+  {
+    "name": "beige_wall_001",
+    "textures": {
+      "_BaseMap": {
+        "texture": "beige_wall_001_diff_4k.jpg",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_BumpMap": {
+        "texture": "beige_wall_001_nor_gl_4k.exr",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_MetallicGlossMap": {
+        "texture": "beige_wall_001_rough_4k.jpg",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_ParallaxMap": {
+        "texture": "beige_wall_001_disp_4k.png",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "color": [
+      0.9063317,
+      0.9063317,
+      0.9063317,
+      1.0
+    ]
+  },
+  {
+    "name": "terlenka",
+    "textures": {
+      "_BaseMap": {
+        "texture": "terlenka_anisotropy_rotation_4k.png",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_BumpMap": {
+        "texture": "terlenka_nor_gl_4k.exr",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_MetallicGlossMap": {
+        "texture": "terlenka_rough_4k.exr",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_ParallaxMap": {
+        "texture": "terlenka_disp_4k.png",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "color": [
+      0.9063317,
+      0.9063317,
+      0.9063317,
+      1.0
+    ]
+  },
+  {
+    "name": "metal_white",
+    "textures": {},
+    "color": [
+      0.6698113,
+      0.6698113,
+      0.6698113,
+      1.0
+    ]
+  },
+  {
+    "name": "asphalt_04",
+    "textures": {
+      "_BaseMap": {
+        "texture": "asphalt_04_diff_4k.jpg",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_BumpMap": {
+        "texture": "asphalt_04_nor_gl_4k.exr",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_MetallicGlossMap": {
+        "texture": "asphalt_04_rough_4k.exr",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_ParallaxMap": {
+        "texture": "asphalt_04_disp_4k.png",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "color": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "name": "oak_veneer_01",
+    "textures": {
+      "_BaseMap": {
+        "texture": "oak_veneer_01_diff_4k.jpg",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_BumpMap": {
+        "texture": "oak_veneer_01_nor_gl_4k.exr",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_MetallicGlossMap": {
+        "texture": "oak_veneer_01_rough_4k.exr",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_ParallaxMap": {
+        "texture": "oak_veneer_01_disp_4k.png",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "color": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "name": "Material.002",
+    "textures": {},
+    "color": [
+      0.9074582,
+      0.6844586,
+      0.17897668,
+      1.0
+    ]
+  },
+  {
+    "name": "concrete_floor_worn_001",
+    "textures": {
+      "_BaseMap": {
+        "texture": "concrete_floor_worn_001_diff_4k.jpg",
+        "scale": [
+          10.0,
+          10.0
+        ]
+      },
+      "_BumpMap": {
+        "texture": "concrete_floor_worn_001_nor_gl_4k.exr",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_MetallicGlossMap": {
+        "texture": "concrete_floor_worn_001_rough_4k.jpg",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_ParallaxMap": {
+        "texture": "concrete_floor_worn_001_disp_4k.png",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "color": [
+      0.9063317,
+      0.9063317,
+      0.9063317,
+      1.0
+    ]
+  },
+  {
+    "name": "brown_floor_tiles",
+    "textures": {
+      "_BaseMap": {
+        "texture": "brown_floor_tiles_diff_4k.jpg",
+        "scale": [
+          30.0,
+          30.0
+        ]
+      },
+      "_BumpMap": {
+        "texture": "brown_floor_tiles_nor_gl_4k.exr",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "_ParallaxMap": {
+        "texture": "brown_floor_tiles_disp.exr",
+        "scale": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "color": [
+      0.1745283,
+      0.5448707,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "name": "metal_classic",
+    "textures": {},
+    "color": [
+      0.5283019,
+      0.5283019,
+      0.5283019,
+      1.0
+    ]
+  }
+]
