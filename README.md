@@ -8,6 +8,8 @@
   Kadijatou Diallo · Elodie Conan · Luíza Diesel Chesani · Tom Voisine · Alexandre Pinard · Matys BIECHE
 </p>
 
+[![Schéma électronique du robot](Image/Team%20United.png)](Image/Team%20United.png)
+
 <p align="center">
   <a href="#télécharger-le-simulateur">Téléchargements</a> ·
   <a href="#simulation-unity">Simulation</a> ·
