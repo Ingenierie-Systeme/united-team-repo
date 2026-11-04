@@ -5,7 +5,10 @@ from rclpy.node import Node
 
 from std_msgs.msg import Float32MultiArray
 
-from pynput import keyboard
+import sys
+import select
+import termios
+import tty
 
 from math import sin, pi
 import time
@@ -33,7 +36,7 @@ class ManualControlNode(Node):
         self.start_time = time.monotonic()
 
         # ----------------------------------
-        # Mass position command
+        # Mass position
 
         self.mass_position = 0.0
         self.mass_step = 0.05
@@ -48,97 +51,30 @@ class ManualControlNode(Node):
         )
 
         # ----------------------------------
+        # Terminal configuration
+
+        self.settings = termios.tcgetattr(sys.stdin)
+        tty.setcbreak(sys.stdin.fileno())
+
+        # ----------------------------------
         # Timer: 50 Hz
 
         self.timer = self.create_timer(
             1.0 / 50.0,
-            self.publish_command
+            self.update
         )
 
-        # ----------------------------------
-        # Keyboard listener
+        self.get_logger().info("Manual control started.")
 
-        self.listener = keyboard.Listener(
-            on_press=self.on_press,
-            on_release=self.on_release
-        )
-
-        self.listener.start()
-
-        self.get_logger().info(
-            "Manual control started."
-        )
-
-        self.get_logger().info(
-            "Z: forward | Q: left | D: right | S: stop"
-        )
-
-        self.get_logger().info(
-            "I: mass forward | K: mass backward | SPACE: emergency stop"
-        )
-
-    # ==================================
-    # Keyboard management
-
-    def on_press(self, key):
-
-        try:
-            char = key.char.lower()
-        except AttributeError:
-            char = None
-
-        # Propulsion commands
-
-        if char == 'z':
-            self.set_direction("forward")
-
-        elif char == 'q':
-            self.set_direction("left")
-
-        elif char == 'd':
-            self.set_direction("right")
-
-        elif char == 's':
-            self.set_direction("stop")
-
-        # Mass commands
-
-        elif char == 'i':
-            self.mass_position += self.mass_step
-
-        elif char == 'k':
-            self.mass_position -= self.mass_step
-
-        # Limit the mass command
-
-        self.mass_position = max(
-            -1.0,
-            min(1.0, self.mass_position)
-        )
-
-        # Emergency stop
-
-        if key == keyboard.Key.space:
-            self.set_direction("stop")
-            self.mass_position = 0.0
-
-    def on_release(self, key):
-
-        try:
-            char = key.char.lower()
-        except AttributeError:
-            char = None
-
-        # Stop propulsion when releasing the active direction key
-
-        if char in ['z', 'q', 'd']:
-            if self.direction == {
-                'z': 'forward',
-                'q': 'left',
-                'd': 'right'
-            }[char]:
-
-                self.set_direction("stop")
+        print("\n========== MANUAL CONTROL ==========")
+        print("Z : Forward")
+        print("Q : Left")
+        print("D : Right")
+        print("S : Stop propulsion")
+        print("I : Mass forward")
+        print("K : Mass backward")
+        print("SPACE : Emergency stop")
+        print("====================================\n")
 
     # ==================================
     # Direction management
@@ -165,14 +101,50 @@ class ManualControlNode(Node):
 
         self.start_time = time.monotonic()
 
-        self.get_logger().info(
-            f"Direction changed: {direction}"
-        )
+        print(f"Direction: {direction}")
 
     # ==================================
-    # Servo command calculation
+    # Keyboard management
 
-    def publish_command(self):
+    def read_keyboard(self):
+
+        if select.select([sys.stdin], [], [], 0)[0]:
+
+            key = sys.stdin.read(1).lower()
+
+            if key == 'z':
+                self.set_direction("forward")
+
+            elif key == 'q':
+                self.set_direction("left")
+
+            elif key == 'd':
+                self.set_direction("right")
+
+            elif key == 's':
+                self.set_direction("stop")
+
+            elif key == 'i':
+                self.mass_position += self.mass_step
+
+            elif key == 'k':
+                self.mass_position -= self.mass_step
+
+            elif key == ' ':
+                self.set_direction("stop")
+                self.mass_position = 0.0
+
+            self.mass_position = max(
+                -1.0,
+                min(1.0, self.mass_position)
+            )
+
+    # ==================================
+    # Main update
+
+    def update(self):
+
+        self.read_keyboard()
 
         # Elapsed time
         t = time.monotonic() - self.start_time
@@ -183,10 +155,10 @@ class ManualControlNode(Node):
             + self.amplitude * sin(2 * pi * self.frequency * t)
         )
 
-        # Mass position command
+        # Mass command
         mass_command = self.mass_position
 
-        # Create ROS message
+        # ROS message
         msg = Float32MultiArray()
 
         msg.data = [
@@ -196,9 +168,23 @@ class ManualControlNode(Node):
 
         self.pub_servos.publish(msg)
 
+    # ==================================
+    # Shutdown
 
-# ==================================
-# Main
+    def shutdown(self):
+
+        self.center = 0.0
+        self.amplitude = 0.0
+        self.mass_position = 0.0
+
+        self.update()
+
+        termios.tcsetattr(
+            sys.stdin,
+            termios.TCSADRAIN,
+            self.settings
+        )
+
 
 def main():
 
@@ -213,16 +199,7 @@ def main():
         pass
 
     finally:
-
-        # Stop both servos
-        node.center = 0.0
-        node.amplitude = 0.0
-        node.mass_position = 0.0
-
-        node.publish_command()
-
-        node.listener.stop()
-
+        node.shutdown()
         node.destroy_node()
         rclpy.shutdown()
 

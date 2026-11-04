@@ -87,7 +87,7 @@ class NavigatorNode(Node):
 
         duty_servo1 = DUTY_MID + servo1 * (DUTY_MAX-DUTY_MID)
         duty_servo2 = DUTY_MID + servo2 * (DUTY_MAX-DUTY_MID)
-
+        self.get_logger().info("coucou")
         navigator.set_pwm_channel_duty_cycle(1, duty_servo1)
         navigator.set_pwm_channel_duty_cycle(0, duty_servo2)
 
