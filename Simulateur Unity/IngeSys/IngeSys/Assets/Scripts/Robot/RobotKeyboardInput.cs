@@ -28,7 +28,8 @@ namespace IngeSys.Robot
 
         void Update()
         {
-            if (!readKeyboard || IngeSys.Diagnostics.RobotPilotHUD.IsEditingPalmageField)
+            var rosControl=GetComponent<RobotRosControl>();
+            if ((rosControl&&rosControl.OwnsActuators) || !readKeyboard || IngeSys.Diagnostics.RobotPilotHUD.IsEditingPalmageField)
             {
                 up = down = false;
                 return;
@@ -45,6 +46,8 @@ namespace IngeSys.Robot
         public void CaptureCommands(bool forward, bool backward, bool center, bool toggle,
                                     bool left, bool right)
         {
+            var rosControl=GetComponent<RobotRosControl>();
+            if(rosControl&&rosControl.OwnsActuators)return;
             up = forward;
             down = backward;
             resetPending |= center;
@@ -61,6 +64,8 @@ namespace IngeSys.Robot
             }
         }
 
+        public void ClearHeldCommands(){up=down=resetPending=false;}
+
         void OnApplicationFocus(bool focused)
         {
             if (!focused)
@@ -73,6 +78,8 @@ namespace IngeSys.Robot
         /// <summary>UI units: degrees / hertz. The mechanical bound is symmetric and authoritative.</summary>
         public bool SetPalmageSettings(float amplitudeDegrees, float frequencyHz, float absoluteAngleDegrees)
         {
+            var rosControl=GetComponent<RobotRosControl>();
+            if(rosControl&&rosControl.OwnsActuators)return false;
             if (!Finite(amplitudeDegrees) || !Finite(frequencyHz) || !Finite(absoluteAngleDegrees)) return false;
             var servo = GetComponent<FinServo>();
             float limit = Mathf.Clamp(Mathf.Abs(absoluteAngleDegrees), 0, servo.hardwareMaximumAngleRad * Mathf.Rad2Deg) * Mathf.Deg2Rad;
@@ -89,6 +96,8 @@ namespace IngeSys.Robot
 
         void FixedUpdate()
         {
+            var rosControl=GetComponent<RobotRosControl>();
+            if(rosControl&&rosControl.OwnsActuators)return;
             var mass = GetComponent<SlidingMass>();
             var p = GetComponent<RobotFishParameters>();
             if (resetPending)

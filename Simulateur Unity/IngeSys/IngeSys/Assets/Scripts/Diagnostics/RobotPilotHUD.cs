@@ -9,6 +9,7 @@ namespace IngeSys.Diagnostics
         public RobotKeyboardInput pilot;
         public bool showPalmageSettings;
         public static bool IsEditingPalmageField { get; private set; }
+        static readonly string[] Sources={"Clavier","ROS servos","ROS palmage"};
         static readonly string[] Tabs = { "Pilotage", "Palmage" };
         string amplitudeText, frequencyText, angleText, settingsMessage = "";
         bool settingsLoaded;
@@ -121,24 +122,34 @@ namespace IngeSys.Diagnostics
             float thrustValue = instant ? hydro.thrustN : thrust.thrustN;
             float lateralValue = instant ? hydro.lateralN : thrust.lateralN;
             float panelWidth = Mathf.Min(520, Screen.width / uiScale - 24);
-            GUI.Box(new Rect(12, 12, panelWidth, 325), "United TEAM");
+            GUI.Box(new Rect(12, 12, panelWidth, 410), "United TEAM");
             int selected = GUI.Toolbar(new Rect(24, 36, panelWidth - 24, 26), showPalmageSettings ? 1 : 0, Tabs);
             if ((selected == 1) != showPalmageSettings)
             {
                 showPalmageSettings = selected == 1;
                 LoadSettings(); GUI.FocusControl(null);
             }
+            var rosControl=pilot.GetComponent<RobotRosControl>();
+            if(rosControl)
+            {
+                int choice=GUI.Toolbar(new Rect(24,68,panelWidth-24,26),(int)rosControl.source,Sources);
+                if(choice!=(int)rosControl.source){rosControl.SetSource((RobotRosControl.ControlSource)choice);GUI.FocusControl(null);}
+                GUI.Label(new Rect(24,375,panelWidth-24,35),rosControl.Status);
+            }
             if (showPalmageSettings)
             {
-                DrawPalmageSettings(new Rect(24, 74, panelWidth - 24, 255), servo);
+                bool wasEnabled=GUI.enabled;
+                if(rosControl&&rosControl.OwnsActuators)GUI.enabled=false;
+                DrawPalmageSettings(new Rect(24, 105, panelWidth - 24, 255), servo);
+                GUI.enabled=wasEnabled;
                 GUI.matrix = previousMatrix;
                 return;
             }
             IsEditingPalmageField = false;
             GUI.Label(
-                new Rect(24, 70, panelWidth - 24, 260),
-                $"Propulsion {(pilot.propulsionOn?"ON":"OFF")} | {pilot.mode}\n" +
-                    $"A {servo.effectiveAmplitudeRad*Mathf.Rad2Deg:F1}° | f {servo.effectiveFrequencyHz:F2} Hz | offset {servo.effectiveOffsetRad*Mathf.Rad2Deg:F1}°\n" +
+                new Rect(24, 103, panelWidth - 24, 265),
+                (rosControl&&rosControl.OwnsActuators ? $"Commande ROS | Actionnement {(servo.animate?"ON":"OFF")}\n" : $"Propulsion {(pilot.propulsionOn?"ON":"OFF")} | {pilot.mode}\n") +
+                    (servo.externalPositionControl ? $"Consigne servo ROS {servo.externalTargetAngleRad*Mathf.Rad2Deg:F1}°\n" : $"A {servo.effectiveAmplitudeRad*Mathf.Rad2Deg:F1}° | f {servo.effectiveFrequencyHz:F2} Hz | offset {servo.effectiveOffsetRad*Mathf.Rad2Deg:F1}°\n") +
                     $"Servo réel {servo.actualAngleRad*Mathf.Rad2Deg:F1}° | masse s={mass.positionM:F3} / cible {mass.targetPositionM:F3} m\n" +
                     $"Position {rb.position:F2} m | profondeur moyenne {depth:F2} m / locale {localDepth:F2} m\n" +
                     $"Vitesse longitudinale {pilot.transform.InverseTransformDirection(rb.linearVelocity).z:F3} m/s\n" +

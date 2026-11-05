@@ -6,6 +6,9 @@ namespace IngeSys.Robot
     public sealed class FinServo : MonoBehaviour
     {
         public bool animate = true;
+        [Tooltip("ROS position stream: bypasses the sine generator, retaining position/speed/acceleration limits.")]
+        public bool externalPositionControl;
+        public float externalTargetAngleRad;
         public float amplitudeRad = 0.35f;
         public float frequencyHz = 1f;
         public float offsetRad;
@@ -80,6 +83,11 @@ namespace IngeSys.Robot
                                  2f * Mathf.PI);
             float desiredAngleRad =
                 animate ? effectiveOffsetRad + effectiveAmplitudeRad * Mathf.Sin(phase) : 0f;
+            if(externalPositionControl)
+            {
+                effectiveAmplitudeRad=effectiveFrequencyHz=effectiveOffsetRad=0;
+                desiredAngleRad=animate?Mathf.Clamp(externalTargetAngleRad,-maximumAngleRad,maximumAngleRad):0;
+            }
             float previousAngle=actualAngleRad, previousVelocity=actualAngularVelocityRadS;
             float dt=Time.fixedDeltaTime;
             if(limitAcceleration)
@@ -96,6 +104,7 @@ namespace IngeSys.Robot
                     float target=animate?effectiveOffsetRad+effectiveAmplitudeRad*Mathf.Sin(t):0;
                     float targetVelocity=animate?effectiveAmplitudeRad*w*Mathf.Cos(t):0;
                     float targetAcceleration=animate?-effectiveAmplitudeRad*w*w*Mathf.Sin(t):0;
+                    if(externalPositionControl){target=desiredAngleRad;targetVelocity=targetAcceleration=0;}
                     float acceleration=targetAcceleration+trackingRate*trackingRate*(target-actualAngleRad)
                         +2*trackingRate*(targetVelocity-motorVelocityRadS);
                     motorVelocityRadS=Mathf.Clamp(motorVelocityRadS+

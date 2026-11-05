@@ -24606,6 +24606,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1434304210850465660, guid: 3b62f6d45c4e37324b98adb169919862, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4724690036652642206}
+    - targetCorrespondingSourceObject: {fileID: 1434304210850465660, guid: 3b62f6d45c4e37324b98adb169919862, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4724690036652642207}
   m_SourcePrefab: {fileID: 100100000, guid: 3b62f6d45c4e37324b98adb169919862, type: 3}
 --- !u!1 &4724690036652642180 stripped
 GameObject:
@@ -24829,6 +24832,31 @@ MonoBehaviour:
   validityLimitReached: 0
   solveFailed: 0
   pivotLocal: {x: 0, y: 0.0064501762, z: -0.325}
+--- !u!114 &4724690036652642207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724690036652642180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c20dc9dfc6b80f4bb9710ec1c2f68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IngeSys.Robot.RobotRosControl
+  source: 0
+  servoTopic: /output/servos
+  finTopic: /robot_fish/fin_command
+  massTopic: /robot_fish/mass_position
+  stateTopic: /robot_fish/actuators_state
+  commandTimeoutS: 1
+  stateFrequencyHz: 20
+  normalizedFinRangeRad: 1.0471976
+  invertFin: 0
+  invertMass: 0
+  acceptedCommands: 0
+  rejectedCommands: 0
+  requestedAngleRad: 0
 --- !u!23 &4738462642651551642
 MeshRenderer:
   m_ObjectHideFlags: 0
