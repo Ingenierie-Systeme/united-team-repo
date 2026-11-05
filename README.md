@@ -190,6 +190,7 @@ Tous les équipements partagent une masse commune (GND). Pour PWM1 et PWM3, seul
 - [Espace Canva](https://canva.link/1owfrv3v93n80cp)
 - [Dossier Google Drive](https://drive.google.com/drive/folders/1FjV8GK_41jrpMsA0FTS6ITrTZtgfy01Q?usp=sharing)
 - [Présentations des rendez-vous](<Slides RDV>)
+- [Présentation finale - Espace Canva](https://canva.link/qmcjd6mssj421ag)
 
 ## Licence
 
