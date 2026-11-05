@@ -178,6 +178,7 @@ Tous les équipements partagent une masse commune (GND). Pour PWM1 et PWM3, seul
 
 - Prix des matériaux et composants: **1 735 €**
 - Coût masse salariale (ingénieurs): **9 240 €**
+- Prix lampe: **155,75 €**
 
 |  | Total | Composition du coût |
 | --- | --- |---|
