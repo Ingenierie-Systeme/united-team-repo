@@ -6,42 +6,6 @@ sous `Packages/com.unity.robotics.ros-tcp-connector`, copié depuis le cache loc
 d’« Exercice 2 », avec sa licence. Aucun téléchargement n’est nécessaire.
 Le symbole de compilation `ROS2` est activé pour Standalone.
 
-## Connexion et vérification
-
-Le serveur ROS-TCP-Endpoint ROS2 est inclus sous `ROS2/src/ROS-TCP-Endpoint`,
-copié depuis les sources locales existantes, sans historique Git. Depuis la racine
-du dépôt, construire une fois :
-
-```bash
-source /opt/ros/jazzy/setup.bash
-cd ROS2
-colcon build --symlink-install --packages-select ros_tcp_endpoint
-cd ..
-```
-
-Puis lancer le serveur depuis la racine du dépôt :
-
-```bash
-source /opt/ros/jazzy/setup.bash
-source ROS2/install/local_setup.bash
-ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=127.0.0.1 -p ROS_TCP_PORT:=10000
-```
-
-Ouvrir la scène `RobotFishKatarstique`, puis lancer Play. Le connecteur utilise
-par défaut `127.0.0.1:10000` ; pour une autre machine, configurer Robotics → ROS
-Settings et l’adresse d’écoute du serveur. Dans un second terminal, à la racine
-du dépôt :
-
-```bash
-source /opt/ros/jazzy/setup.bash
-python3 ROS2/check_imu.py
-ros2 topic echo /imu/data sensor_msgs/msg/Imu
-```
-
-Les futurs nodes de contrôle peuvent rester dans un workspace distinct : ils
-s’abonnent au même topic standard, sans dépendance aux scripts Unity. Aucun topic
-de commande n’est ajouté ici.
-
 ## Contrat du capteur
 
 - Topic `/imu/data`, type `sensor_msgs/msg/Imu`, frame `imu_link`.
@@ -91,14 +55,3 @@ modifie pas la physique. Aucun bruit, biais, pression dynamique, effet thermique
 ou TF n’est ajouté. Pour un robot réel, les nodes peuvent dériver la profondeur
 avec `(pression - pression_surface) / (rho * g)`, après calibration. La profondeur
 simulée est ici une référence idéale pour vérifier ces algorithmes.
-
-Démarrer le même serveur ROS-TCP-Endpoint et Play dans Unity, puis :
-
-```bash
-source /opt/ros/jazzy/setup.bash
-ros2 topic echo /barometer/pressure sensor_msgs/msg/FluidPressure
-# Dans un autre terminal sourcé :
-ros2 topic echo /depth std_msgs/msg/Float64
-# Test avec les paramètres de calibration par défaut, depuis la racine du dépôt :
-python3 ROS2/check_depth.py
-```

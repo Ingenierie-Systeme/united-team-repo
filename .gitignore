@@ -2,3 +2,7 @@
 ros2_ws/build/
 ros2_ws/install/
 ros2_ws/log/
+
+# Documentation locale du simulateur Unity
+/Simulateur Unity/IngeSys/IngeSys/Assets/Documentation/
+/Simulateur Unity/IngeSys/IngeSys/Assets/Documentation.meta
