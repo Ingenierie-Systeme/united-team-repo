@@ -24,6 +24,11 @@
 
 Nous développons un robot aquatique propulsé par une palme, dont l'assiette est modifiée par une masse mobile interne. Le dépôt rassemble la conception du robot, le logiciel destiné au Raspberry Pi et à la carte Navigator, ainsi qu'un simulateur permettant d'explorer son comportement dans une piscine et des galeries karstiques inondées.
 
+<p align="center">
+  <img src="Image/1000039239.gif" alt="Robot dans l’eau" width="36%">
+  <img src="Image/1000039240.gif" alt="Robot en essai dans l’eau" width="36%">
+</p>
+
 ## Télécharger le simulateur
 
 **Aucune installation de Unity n'est nécessaire pour utiliser les builds.** Télécharger l'archive correspondant à votre système, puis l'extraire entièrement avant de lancer le simulateur.
